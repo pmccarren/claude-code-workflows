@@ -1,0 +1,5 @@
+{
+  "name": "conventional-commits",
+  "version": "1.0.0",
+  "description": "Write git commit messages that follow the Conventional Commits v1.0.0 specification."
+}
