@@ -1,12 +1,12 @@
 {
-	"name": "claude-code-workflows",
+	"name": "pmccarren-workflows",
 	"owner": {
 		"name": "Patrick McCarren",
 		"url": "https://github.com/pmccarren"
 	},
 	"metadata": {
 		"description": "Claude Code workflow plugins by Patrick McCarren.",
-		"version": "0.1.0"
+		"version": "0.1.1"
 	},
 	"plugins": [
 		{
