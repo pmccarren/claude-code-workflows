@@ -1,0 +1,21 @@
+{
+	"name": "claude-code-workflows",
+	"owner": {
+		"name": "Patrick McCarren",
+		"url": "https://github.com/pmccarren"
+	},
+	"metadata": {
+		"description": "Claude Code workflow plugins by Patrick McCarren.",
+		"version": "0.1.0"
+	},
+	"plugins": [
+		{
+			"name": "conventional-commits",
+			"source": "./plugins/conventional-commits",
+			"description": "Skill for writing git commit messages that follow the Conventional Commits specification.",
+			"version": "1.0.0",
+			"category": "git",
+			"tags": ["git", "commits", "conventional-commits"]
+		}
+	]
+}
