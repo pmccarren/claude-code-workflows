@@ -16,6 +16,14 @@
 			"version": "1.0.0",
 			"category": "git",
 			"tags": ["git", "commits", "conventional-commits"]
+		},
+		{
+			"name": "branch-and-pr",
+			"source": "./plugins/branch-and-pr",
+			"description": "Skills for naming git branches and opening GitHub PRs with Conventional-Commits-style titles.",
+			"version": "1.0.0",
+			"category": "git",
+			"tags": ["git", "branches", "pull-requests", "github", "conventional-commits"]
 		}
 	]
 }
