@@ -21,19 +21,27 @@ Without an issue ID:
 <type>/<slug>
 ```
 
-The issue ID always comes first when available. Do not invent one if there isn't one — drop the segment instead.
+Segments are always joined with `/` — never `-`, `_`, or nothing. The issue ID, when one exists, is always the **first segment, on its own**, followed by `/`. Do not invent an issue ID if there isn't one — drop the segment instead.
+
+Concrete:
+
+- Issue ID `P-123`, feature: `P-123/feat/new-feature`
+- No issue ID, feature: `feat/new-feature`
 
 ## Segments
 
 ### `<issue-id>`
 
-The tracker ID exactly as the tracker returns it. Preserve case and any prefix.
+Copy the tracker ID **verbatim** as the first segment — same case, same prefix, same internal dash. Do not lowercase it. Do not drop or rename the prefix. Do not collapse, remove, or substitute the dash inside it. Whatever the tracker prints is what goes on the branch.
 
-- Linear: `P-688`, `ENG-1421`
-- GitHub Issues: `gh-482`
-- Jira: `WED-93`
+- Linear `P-688` → branch starts `P-688/…` (not `p-688/…`, not `P688/…`, not `P_688/…`)
+- Linear `ENG-1421` → branch starts `ENG-1421/…` (not `eng-1421/…`)
+- GitHub `gh-482` → branch starts `gh-482/…` (lowercase here is verbatim — preserve whatever the tracker uses)
+- Jira `WED-93` → branch starts `WED-93/…`
 
-If the user gives you the issue by URL or by title, fetch/normalize the ID first. If no issue exists, skip this segment.
+The `/` after the issue ID is required — it separates the issue-id segment from the type segment. The issue ID is never glued to the type with `-` or `_`, and never embedded inside the slug.
+
+If the user gives you the issue by URL or title, extract the ID first (e.g. `https://linear.app/foo/issue/P-688/...` → `P-688`). If no issue exists, drop the segment entirely; do not invent one and do not leave an empty `/`.
 
 ### `<type>`
 
@@ -98,7 +106,7 @@ rf/split-user-repo
 
 ## Workflow
 
-1. Determine whether an issue ID exists. If yes, normalize it (preserve case).
+1. Determine whether an issue ID exists. If yes, copy it verbatim from the tracker — same case, same prefix, same dash.
 2. Pick the type from the Conventional Commits vocabulary above.
 3. Slugify the source title per the rules.
 4. Assemble `<issue-id>/<type>/<slug>` or `<type>/<slug>`.

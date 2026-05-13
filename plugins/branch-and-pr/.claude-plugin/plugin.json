@@ -1,5 +1,5 @@
 {
   "name": "branch-and-pr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Skills for naming git branches and opening GitHub PRs with Conventional-Commits-style titles."
 }
