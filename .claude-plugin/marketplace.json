@@ -6,7 +6,7 @@
 	},
 	"metadata": {
 		"description": "Claude Code workflow plugins by Patrick McCarren.",
-		"version": "0.2.1"
+		"version": "0.2.0"
 	},
 	"plugins": [
 		{
@@ -29,7 +29,7 @@
 			"name": "handle-linear-issue",
 			"source": "./plugins/handle-linear-issue",
 			"description": "Slash command that takes a Linear issue from fetch to open PR.",
-			"version": "1.1.0",
+			"version": "1.0.0",
 			"category": "workflow",
 			"tags": ["linear", "issues", "pull-requests", "github", "workflow"]
 		}

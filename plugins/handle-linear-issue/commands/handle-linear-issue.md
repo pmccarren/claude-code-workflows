@@ -1,5 +1,4 @@
 ---
-name: handle-linear-issue
 description: Work on a Linear issue and open a PR. Branch and PR naming are delegated to the branch-naming and create-pr skills.
 argument-hint: <linear-issue-id>
 ---
