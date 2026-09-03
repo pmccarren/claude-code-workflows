@@ -1,18 +1,18 @@
 # handle-linear-issue
 
-A Claude Code plugin with a single slash command that takes a Linear issue from "fetch it" to "PR is open", in one pass.
+A Claude Code plugin with a single skill that takes a Linear issue from "fetch it" to "PR is open", in one pass.
 
 ## What it provides
 
-| Command | Usage |
+| Skill | Usage |
 | --- | --- |
-| [`/handle-linear-issue`](commands/handle-linear-issue.md) | `/handle-linear-issue T-688` — fetch the issue, branch, implement, commit, open the PR. |
+| [`/handle-linear-issue`](skills/handle-linear-issue/SKILL.md) | `/handle-linear-issue T-688` — fetch the issue, branch, implement, commit, open the PR. |
 
-The command deliberately does **not** spell out branch or PR naming. Those steps hand off to the [`branch-and-pr`](../branch-and-pr) skills (`branch-naming`, `create-pr`), so the issue ID, branch, squash commit, and PR title all line up.
+The skill deliberately does **not** spell out branch or PR naming. Those steps hand off to the [`branch-and-pr`](../branch-and-pr) skills (`branch-naming`, `create-pr`), so the issue ID, branch, squash commit, and PR title all line up.
 
 ## Requirements
 
-- A Linear MCP server, for the `get_issue` call in step 1. The command accepts either the `linear` plugin's server (`mcp__plugin_linear_linear__*`) or Linear connected as a claude.ai connector (`mcp__claude_ai_Linear__*`).
+- A Linear MCP server, for the `get_issue` call in step 1. The skill accepts either the `linear` plugin's server (`mcp__plugin_linear_linear__*`) or Linear connected as a claude.ai connector (`mcp__claude_ai_Linear__*`).
 - `gh` on `PATH` for opening the PR.
 - The [`branch-and-pr`](../branch-and-pr) plugin, for the naming steps.
 
@@ -34,6 +34,7 @@ plugins/handle-linear-issue/
 ├── .claude-plugin/
 │   └── plugin.json
 ├── README.md
-└── commands/
-    └── handle-linear-issue.md
+└── skills/
+    └── handle-linear-issue/
+        └── SKILL.md
 ```
