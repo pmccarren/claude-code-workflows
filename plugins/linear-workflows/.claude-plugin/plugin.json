@@ -1,0 +1,5 @@
+{
+  "name": "linear-workflows",
+  "version": "1.0.0",
+  "description": "Linear workflows: a slash command that takes an issue from fetch to open PR, and a skill that turns a design doc or plan into a Linear project with issues."
+}

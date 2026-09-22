@@ -1,5 +1,0 @@
-{
-  "name": "handle-linear-issue",
-  "version": "1.0.0",
-  "description": "Slash command that takes a Linear issue from fetch to open PR, delegating branch and PR naming to the branch-and-pr skills."
-}
