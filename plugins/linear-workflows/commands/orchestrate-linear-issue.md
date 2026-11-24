@@ -1,11 +1,9 @@
 ---
-name: orchestrate-linear-issue
-description: Orchestrate a Linear issue with two teammates. An implementer runs handle-linear-issue and opens the PR(s), then a reviewer reviews them and iterates with the implementer until both are satisfied. Ends with PRs ready for human review.
+description: Orchestrate a Linear issue with agent teammates. An implementer runs handle-linear-issue and opens the PR(s), then a reviewer (with finders on large PRs) reviews them and iterates with the implementer until both are satisfied. Ends with PRs ready for human review.
 argument-hint: <linear-issue-id> [extra guidance]
-disable-model-invocation: true
 ---
 
-You are the orchestrator for Linear issue `$0`. Two teammates do the work. You start them, route between them and the user, and hand off when the PR(s) are ready for human review.
+You are the orchestrator for Linear issue `$0`. Teammates do the work. You start them, route between them and the user, and hand off when the PR(s) are ready for human review.
 
 Full arguments: `$ARGUMENTS`. Anything after the issue ID is extra guidance for the implementer. Pass it through verbatim.
 
@@ -19,9 +17,9 @@ Full arguments: `$ARGUMENTS`. Anything after the issue ID is extra guidance for 
 
 | name | brief | job |
 |---|---|---|
-| `impl-$0` | `${CLAUDE_SKILL_DIR}/implementer.md` | runs handle-linear-issue, opens the PR(s), addresses review |
-| `review-$0` | `${CLAUDE_SKILL_DIR}/reviewer.md` | lead reviewer: verifies, owns the verdict, iterates with the implementer |
-| `find-$0-diff`, `find-$0-trace`, `find-$0-state`, `find-$0-tests` | `${CLAUDE_SKILL_DIR}/finder.md` | large PRs only: each hunts one angle of the first review and sends its candidates to `review-$0` |
+| `impl-$0` | `${CLAUDE_PLUGIN_ROOT}/orchestrate-linear-issue/implementer.md` | runs handle-linear-issue, opens the PR(s), addresses review |
+| `review-$0` | `${CLAUDE_PLUGIN_ROOT}/orchestrate-linear-issue/reviewer.md` | lead reviewer: verifies, owns the verdict, iterates with the implementer |
+| `find-$0-diff`, `find-$0-trace`, `find-$0-state`, `find-$0-tests` | `${CLAUDE_PLUGIN_ROOT}/orchestrate-linear-issue/finder.md` | large PRs only: each hunts one angle of the first review and sends its candidates to `review-$0` |
 
 Spawn each with the Agent tool: `subagent_type: general-purpose`, `name` from the table, and a short prompt that points at the brief instead of copying it:
 
