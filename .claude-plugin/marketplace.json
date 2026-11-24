@@ -6,7 +6,7 @@
 	},
 	"metadata": {
 		"description": "Claude Code workflow plugins by Patrick McCarren.",
-		"version": "0.3.0"
+		"version": "0.4.0"
 	},
 	"plugins": [
 		{
@@ -28,10 +28,10 @@
 		{
 			"name": "linear-workflows",
 			"source": "./plugins/linear-workflows",
-			"description": "Linear workflows: take an issue from fetch to open PR, and turn a design doc or plan into a Linear project with issues.",
-			"version": "1.0.0",
+			"description": "Linear workflows: take an issue from fetch to open PR, orchestrate an issue through an agent implementer and reviewer until it's ready for human review, and turn a design doc or plan into a Linear project with issues.",
+			"version": "1.1.0",
 			"category": "workflow",
-			"tags": ["linear", "issues", "projects", "planning", "pull-requests", "github", "workflow"]
+			"tags": ["linear", "issues", "projects", "planning", "pull-requests", "github", "workflow", "code-review", "agent-teams"]
 		}
 	]
 }
