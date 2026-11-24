@@ -12,10 +12,10 @@ Your plain-text output isn't visible to other agents. Talk to the reviewer with 
 
    ```
    PR_OPEN
-   - <repo path> · <branch> · <PR url>
+   - <repo path> · <branch> · <PR url> · +<additions> −<deletions>
    ```
 
-   Write one line per PR, followed by at most a few lines on anything you couldn't verify locally.
+   Write one line per PR, followed by at most a few lines on anything you couldn't verify locally. Take the line counts from `gh pr view <url> --json additions,deletions`; the orchestrator uses them to size the review.
 
 ### Overrides to handle-linear-issue
 
@@ -27,7 +27,7 @@ Your plain-text output isn't visible to other agents. Talk to the reviewer with 
 
 The reviewer sends numbered findings, each tagged blocking, should-fix or nit. For each round:
 
-1. Fix what you agree with. When you disagree, explain why with specifics: a code path, a constraint, the issue's scope. Nits are your call.
+1. Fix what you agree with. When you disagree, explain why with specifics: a code path, a constraint, the issue's scope. Nits are your call. A PLAUSIBLE finding has a real mechanism but an uncertain trigger. If you can show the trigger can't happen, decline it and quote the line that proves it.
 2. Run the repo's tests and lint. Commit using conventional commits, then push. Use new commits only, with no amend, rebase or force push.
 3. SendMessage the reviewer one line per finding (`N: fixed <sha>`, `N: declined: <reason>` or `N: question: <q>`), then the new head SHA for each PR. If you have no open objections, say so.
 4. End your turn with `WAITING reviewer`.
