@@ -8,7 +8,7 @@ A Claude Code plugin for working with Linear: planning a body of work into a pro
 | --- | --- | --- |
 | Skill | [`create-linear-project`](skills/create-linear-project/SKILL.md) | Triggers on requests like "turn this plan into a Linear project", "split this doc into issues", or "how would we ticket this". Proposes the project and its issues, then creates them only once asked. |
 | Command | [`/handle-linear-issue`](commands/handle-linear-issue.md) | `/handle-linear-issue T-688` (namespaced: `/linear-workflows:handle-linear-issue`) — fetch the issue, branch, implement, commit, open the PR. |
-| Skill | [`/orchestrate-linear-issue`](skills/orchestrate-linear-issue/SKILL.md) | `/orchestrate-linear-issue T-688 [extra guidance]` (namespaced: `/linear-workflows:orchestrate-linear-issue`) — an implementer runs `/handle-linear-issue`, a reviewer reviews the PR(s), and they iterate until both are satisfied. Slash-only: Claude never starts it on its own. |
+| Command | [`/orchestrate-linear-issue`](commands/orchestrate-linear-issue.md) | `/orchestrate-linear-issue T-688 [extra guidance]` (namespaced: `/linear-workflows:orchestrate-linear-issue`) — an implementer runs `/handle-linear-issue`, a reviewer reviews the PR(s), and they iterate until both are satisfied. |
 
 ### `create-linear-project`
 
@@ -56,9 +56,9 @@ Notes:
 - Teammates can't ask you questions directly. Their questions reach you through the orchestrator.
 - The reviewer and finders are read-only in the checkout: they never edit, commit, or post to GitHub or Linear. Probes run in an export of the PR head, against the test database.
 - Every review hand-off includes a coverage table and a "What I tried" section, including on approval.
-- The 400-line threshold for finders lives in `SKILL.md` step 3.
+- The 400-line threshold for finders lives in step 3 of the command.
 - Both teammates stay around after hand-off. PR feedback you give the orchestrator goes to the implementer, who still has full context.
-- The teammate briefs, [`implementer.md`](skills/orchestrate-linear-issue/implementer.md), [`reviewer.md`](skills/orchestrate-linear-issue/reviewer.md) and [`finder.md`](skills/orchestrate-linear-issue/finder.md), are read by the teammates themselves, never by the orchestrator.
+- The teammate briefs, [`implementer.md`](orchestrate-linear-issue/implementer.md), [`reviewer.md`](orchestrate-linear-issue/reviewer.md) and [`finder.md`](orchestrate-linear-issue/finder.md), are read by the teammates themselves, never by the orchestrator. The command finds them through `${CLAUDE_PLUGIN_ROOT}`. It's a command rather than a skill because skills inside a plugin don't show up as slash commands.
 
 ## Requirements
 
@@ -81,13 +81,13 @@ plugins/linear-workflows/
 │   └── plugin.json
 ├── README.md
 ├── commands/
-│   └── handle-linear-issue.md
+│   ├── handle-linear-issue.md
+│   └── orchestrate-linear-issue.md
+├── orchestrate-linear-issue/
+│   ├── finder.md
+│   ├── implementer.md
+│   └── reviewer.md
 └── skills/
-    ├── create-linear-project/
-    │   └── SKILL.md
-    └── orchestrate-linear-issue/
-        ├── SKILL.md
-        ├── finder.md
-        ├── implementer.md
-        └── reviewer.md
+    └── create-linear-project/
+        └── SKILL.md
 ```
