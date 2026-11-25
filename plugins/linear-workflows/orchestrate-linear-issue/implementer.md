@@ -12,10 +12,10 @@ Your plain-text output isn't visible to other agents. Talk to the reviewer with 
 
    ```
    PR_OPEN
-   - <repo path> · <branch> · <PR url> · +<additions> −<deletions>
+   - <repo path> · <branch> · <PR url>
    ```
 
-   Write one line per PR, followed by at most a few lines on anything you couldn't verify locally. Take the line counts from `gh pr view <url> --json additions,deletions`; the orchestrator uses them to size the review.
+   Write one line per PR, followed by at most a few lines on anything you couldn't verify locally.
 
 ### Overrides to handle-linear-issue
 
